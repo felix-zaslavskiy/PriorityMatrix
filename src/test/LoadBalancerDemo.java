@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-
+/**
+ * This example was GPT4 sample.
+ * It does not use both levels of priority in the matrix. Uses capacity for both so not
+ * demonstrating the full use of the data structure.
+ */
 class LoadBalancer {
     private final PriorityMatrix<Server> serverMatrix;
 

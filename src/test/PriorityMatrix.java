@@ -6,7 +6,7 @@ import java.util.PriorityQueue;
 import java.util.TreeMap;
 
 public class PriorityMatrix<T> {
-    public  final TreeMap<Integer, PriorityQueue<T>> matrix;
+    private  final TreeMap<Integer, PriorityQueue<T>> matrix;
     private final Map<T, Integer> priorities;
     private final Comparator<T> comparator;
 
@@ -76,5 +76,32 @@ public class PriorityMatrix<T> {
 
         priorities.remove(minElement);
         return minElement;
+    }
+
+    public T getMax() {
+        if (matrix.isEmpty()) {
+            return null;
+        }
+
+        Integer maxPriority = matrix.lastKey();
+        PriorityQueue<T> elements = matrix.get(maxPriority);
+        return elements.peek();
+    }
+
+    public T extractMax() {
+        if (matrix.isEmpty()) {
+            return null;
+        }
+
+        Integer maxPriority = matrix.lastKey();
+        PriorityQueue<T> elements = matrix.get(maxPriority);
+        T maxElement = elements.poll();
+
+        if (elements.isEmpty()) {
+            matrix.remove(maxPriority);
+        }
+
+        priorities.remove(maxElement);
+        return maxElement;
     }
 }

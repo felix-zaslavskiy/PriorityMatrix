@@ -14,7 +14,9 @@ class BalancerTask {
 }
 
 
-
+/**
+ * Shows how load balancer works without PriorityMatrix
+ */
 class SimpleLoadBalancer {
     private final List<Server> servers;
 
