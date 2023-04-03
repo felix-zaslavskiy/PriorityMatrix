@@ -1,4 +1,4 @@
-package test;
+package practice;
 
 import java.util.Comparator;
 import java.util.List;

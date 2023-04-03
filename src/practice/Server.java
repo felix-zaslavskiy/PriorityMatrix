@@ -1,4 +1,4 @@
-package test;
+package practice;
 
 class Server {
     String name;

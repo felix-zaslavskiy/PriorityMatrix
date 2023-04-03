@@ -1,4 +1,7 @@
-# test.PriorityMatrix - DataStructure proposed by GPT4
+# PriorityMatrix - DataStructure co-developed with GPT4
 
-This data structure named "test.PriorityMatrix" as suggested by GPT4
-Here it is included in a working project with related running code.
+This data structure named **PriorityMatrix** developed with the help of GPT4.
+
+Included is a working project with related samples of using the data structure.
+
+[See PriorityMatrix](src/practice/PriorityMatrix.java)
