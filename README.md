@@ -2,6 +2,14 @@
 
 This data structure named **PriorityMatrix** developed with the help of GPT4.
 
-Included is a working project with related samples of using the data structure.
+Included is a project with related samples of using the data structure.
 
-[See PriorityMatrix](src/practice/PriorityMatrix.java)
+**Data structure class:**
+
+[See PriorityMatrix.java](src/practice/PriorityMatrix.java)
+
+**Example of how PriorityMatrix is used in a sample usecase.**
+
+Tasks are scheduled based on CPU class and RAM availability.
+
+[See TaskSchedulerDemo.java](src/practice/TaskSchedulerDemo.java)
