@@ -1,0 +1,34 @@
+@startuml
+participant TaskSchedulerDemo
+participant TaskScheduler
+participant PriorityMatrix
+participant Resource
+participant Task
+
+TaskSchedulerDemo -> TaskScheduler : new()
+TaskSchedulerDemo -> Resource : new("Node1", 1, 10)
+TaskSchedulerDemo -> TaskScheduler : addResource(Resource)
+TaskScheduler -> PriorityMatrix : insert(Resource, 1)
+
+TaskSchedulerDemo -> Resource : new("Node2", 1, 6)
+TaskSchedulerDemo -> TaskScheduler : addResource(Resource)
+TaskScheduler -> PriorityMatrix : insert(Resource, 1)
+
+TaskSchedulerDemo -> Resource : new("Node3", 2, 10)
+TaskSchedulerDemo -> TaskScheduler : addResource(Resource)
+TaskScheduler -> PriorityMatrix : insert(Resource, 2)
+
+TaskSchedulerDemo -> Resource : new("Node4", 2, 6)
+TaskSchedulerDemo -> TaskScheduler : addResource(Resource)
+TaskScheduler -> PriorityMatrix : insert(Resource, 2)
+
+TaskSchedulerDemo -> Task : new("Task1", 1, 5)
+TaskSchedulerDemo -> TaskScheduler : processTask(Task)
+TaskScheduler -> PriorityMatrix : getMin()
+TaskScheduler -> Resource : update availableResourcesRAM
+TaskScheduler -> PriorityMatrix : remove(Resource)
+TaskScheduler -> PriorityMatrix : insert(Resource, 1)
+
+... (similar interactions for other tasks) ...
+
+@enduml

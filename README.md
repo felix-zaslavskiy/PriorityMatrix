@@ -16,3 +16,6 @@ Tasks are scheduled based on CPU class and RAM availability.
 
 Sequence diagram for Task scheduling demo:
 ![Alt Text](src/practice/task-scheduling-sequence.png)
+
+Activity diagram that shows how PriorityMatrix is updated through execution of demo:
+![Alt Text](src/practice/task-scheduling-activity.png)

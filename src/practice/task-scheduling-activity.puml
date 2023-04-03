@@ -1,0 +1,52 @@
+@startuml
+start
+
+:Initial State;
+note right
+  Node1 (10 RAM)
+  Node2 (6 RAM)
+  Node3 (10 RAM)
+  Node4 (6 RAM)
+end note
+
+:Execute Task1;
+note right
+  Node1 (5 RAM)
+  Node2 (6 RAM)
+  Node3 (10 RAM)
+  Node4 (6 RAM)
+end note
+
+:Execute Task2;
+note right
+  Node1 (5 RAM)
+  Node3 (10 RAM)
+  Node4 (6 RAM)
+end note
+
+:Execute Task3;
+note right
+  Node3 (10 RAM)
+  Node4 (6 RAM)
+end note
+
+:Execute Task4;
+note right
+  Node3 (5 RAM)
+  Node4 (6 RAM)
+end note
+
+:Execute Task5;
+note right
+  Node3 (5 RAM)
+  Node4 (3 RAM)
+end note
+
+:Execute Task6;
+note right
+  Node3 (5 RAM)
+  Node4 (1 RAM)
+end note
+
+stop
+@enduml
