@@ -13,3 +13,6 @@ Included is a project with related samples of using the data structure.
 Tasks are scheduled based on CPU class and RAM availability.
 
 [See TaskSchedulerDemo.java](src/practice/TaskSchedulerDemo.java)
+
+Sequence diagram for Task scheduling demo:
+![Alt Text](src/practice/task-scheduling-sequence.png)
