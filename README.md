@@ -36,3 +36,14 @@ Sequence diagram for Task scheduling demo:
 Activity diagram that shows how PriorityMatrix is updated through execution of demo:
 
 ![Alt Text](docs/task-scheduling-activity.png)
+
+
+**Suggested future improvements:**
+
+1. Customizable priority update strategy: The updatePriority() method currently removes the element and then inserts it again with the updated priority. This strategy might not be the most efficient way of updating priorities in all scenarios. The PriorityMatrix class could be redesigned to allow users to provide their priority update strategy, such as an interface with a method to handle priority updates.
+
+2. Additional utility methods: The PriorityMatrix class could benefit from additional utility methods, such as methods for bulk insertion and removal of elements, methods for merging multiple PriorityMatrix instances, or methods for filtering elements based on custom criteria.
+
+3. Thread-safety: If the PriorityMatrix class is intended to be used in concurrent environments, consider adding thread-safety features such as using ConcurrentSkipListMap instead of TreeMap and synchronizing access to methods that modify the PriorityMatrix. Alternatively, provide a separate thread-safe implementation of the PriorityMatrix class.
+
+4. Null element handling: The PriorityMatrix does not handle null elements, and the current design might lead to NullPointerExceptions. Consider adding null checks and handling in methods that accept elements as input or return elements.

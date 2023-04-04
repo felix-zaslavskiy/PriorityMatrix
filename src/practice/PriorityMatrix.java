@@ -12,9 +12,11 @@ import java.util.TreeMap;
  * <p>
  * Example:
  * Consider a PriorityMatrix of Resources, where the rows are CPU priority classes and columns are resources sorted by available RAM.
+ * <p>
  * 1: {R1(12GB), R2(8GB)}
+ * <p>
  * 2: {R3(16GB), R4(10GB)}
- *
+ * <p>
  * One may think of integer priority as the rows of the matrix and the secondary
  * ordering passed in as a Comparator as the column order of items in the matrix.
  *
