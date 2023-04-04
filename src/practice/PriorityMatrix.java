@@ -1,6 +1,8 @@
 package practice;
+
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.TreeMap;
@@ -25,9 +27,9 @@ import java.util.TreeMap;
  *
  * @param <T> the type of elements stored in the PriorityMatrix
  */
-public class PriorityMatrix<T> {
-    private final TreeMap<Integer, PriorityQueue<T>> matrix;
-    private final Map<T, Integer> elementToPriorityMap;
+public class PriorityMatrix<T, P extends Comparable<P>> implements Iterable<T> {
+    private final TreeMap<P, PriorityQueue<T>> matrix;
+    private final Map<T, P> elementToPriorityMap;
     private final Comparator<T> comparator;
 
     /**
@@ -48,7 +50,7 @@ public class PriorityMatrix<T> {
      * @param priority the priority associated with the element
      * @throws IllegalArgumentException if the element already exists in the PriorityMatrix
      */
-    public void insert(T element, int priority) {
+    public void insert(T element, P priority) {
         if (elementToPriorityMap.containsKey(element)) {
             throw new IllegalArgumentException("Element already exists in the Priority Matrix");
         }
@@ -64,7 +66,7 @@ public class PriorityMatrix<T> {
      * @param element The element to update
      * @param newPriority The new priority value of the element
      */
-    public void updatePriority(T element, int newPriority) {
+    public void updatePriority(T element, P newPriority) {
         remove(element);
         insert(element, newPriority);
     }
@@ -94,7 +96,7 @@ public class PriorityMatrix<T> {
      * @return true if the element was removed, false if the element was not found
      */
     public boolean remove(T element) {
-        Integer priority = elementToPriorityMap.remove(element);
+        P priority = elementToPriorityMap.remove(element);
         if (priority == null) {
             return false;
         }
@@ -119,7 +121,7 @@ public class PriorityMatrix<T> {
             return null;
         }
 
-        Integer minPriority = matrix.firstKey();
+        P minPriority = matrix.firstKey();
         PriorityQueue<T> elements = matrix.get(minPriority);
         return elements.peek();
     }
@@ -134,7 +136,7 @@ public class PriorityMatrix<T> {
             return null;
         }
 
-        Integer minPriority = matrix.firstKey();
+        P minPriority = matrix.firstKey();
         PriorityQueue<T> elements = matrix.get(minPriority);
         T minElement = elements.poll();
 
@@ -156,7 +158,7 @@ public class PriorityMatrix<T> {
             return null;
         }
 
-        Integer maxPriority = matrix.lastKey();
+        P maxPriority = matrix.lastKey();
         PriorityQueue<T> elements = matrix.get(maxPriority);
         return elements.peek();
     }
@@ -172,7 +174,7 @@ public class PriorityMatrix<T> {
             return null;
         }
 
-        Integer maxPriority = matrix.lastKey();
+        P maxPriority = matrix.lastKey();
         PriorityQueue<T> elements = matrix.get(maxPriority);
         T maxElement = elements.poll();
 
@@ -185,12 +187,36 @@ public class PriorityMatrix<T> {
     }
 
     @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private final Iterator<Map.Entry<P, PriorityQueue<T>>> outerIterator = matrix.entrySet().iterator();
+            private Iterator<T> innerIterator = null;
+
+            @Override
+            public boolean hasNext() {
+                while ((innerIterator == null || !innerIterator.hasNext()) && outerIterator.hasNext()) {
+                    innerIterator = outerIterator.next().getValue().iterator();
+                }
+                return innerIterator != null && innerIterator.hasNext();
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext()) {
+                    throw new IllegalStateException("No more elements to iterate.");
+                }
+                return innerIterator.next();
+            }
+        };
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("PriorityMatrix{");
 
-        for (Map.Entry<Integer, PriorityQueue<T>> entry : matrix.entrySet()) {
-            Integer priority = entry.getKey();
+        for (Map.Entry<P, PriorityQueue<T>> entry: matrix.entrySet()) {
+            P priority = entry.getKey();
             PriorityQueue<T> elements = entry.getValue();
 
             sb.append("\nPriority ").append(priority).append(": ");
@@ -207,5 +233,4 @@ public class PriorityMatrix<T> {
         sb.append("\n}");
         return sb.toString();
     }
-
 }
