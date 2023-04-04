@@ -54,9 +54,6 @@ class TaskScheduler {
         resourceMatrix.insert(resource, resource.cpuClassAvailability);
     }
 
-    public void removeResource(Resource resource) {
-        resourceMatrix.remove(resource);
-    }
 
     public Resource getResourceForTask() {
         // Lowest CPU class is better.
