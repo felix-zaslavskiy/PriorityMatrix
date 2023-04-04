@@ -57,9 +57,10 @@ public class PriorityMatrix<T> {
     }
 
     /**
+     * Updates the priority of the specified element in the PriorityMatrix.
      *
-     * @param element The element to update,
-     * @param newPriority new priority value of the element
+     * @param element The element to update
+     * @param newPriority The new priority value of the element
      */
     public void updatePriority(T element, int newPriority) {
         remove(element);
@@ -67,21 +68,22 @@ public class PriorityMatrix<T> {
     }
 
     /**
-     * Check if structure has any elements.
-     * @return
+     * Checks if the PriorityMatrix has any elements.
+     *
+     * @return true if the PriorityMatrix is empty, false otherwise
      */
     public boolean isEmpty() {
         return matrix.isEmpty();
     }
 
     /**
-     * Number of elements in the priority map.
-     * @return
+     * Returns the number of elements in the PriorityMatrix.
+     *
+     * @return The total number of elements in the PriorityMatrix
      */
     public int size() {
         return elementToPriorityMap.size();
     }
-
 
     /**
      * Removes the specified element from the PriorityMatrix.
@@ -146,7 +148,8 @@ public class PriorityMatrix<T> {
      * Retrieves the element with the maximum priority, but does not remove it from the PriorityMatrix.
      *
      * @return the element with the maximum priority, or null if the PriorityMatrix is empty
-     */    public T getMax() {
+     */
+    public T getMax() {
         if (matrix.isEmpty()) {
             return null;
         }
@@ -155,6 +158,7 @@ public class PriorityMatrix<T> {
         PriorityQueue<T> elements = matrix.get(maxPriority);
         return elements.peek();
     }
+
 
     /**
      * Retrieves and removes the element with the maximum priority from the PriorityMatrix.
