@@ -14,6 +14,10 @@ import java.util.TreeMap;
  * Consider a PriorityMatrix of Resources, where the rows are CPU priority classes and columns are resources sorted by available RAM.
  * 1: {R1(12GB), R2(8GB)}
  * 2: {R3(16GB), R4(10GB)}
+ *
+ * One may think of integer priority as the rows of the matrix and the secondary
+ * ordering passed in as a Comparator as the column order of items in the matrix.
+ *
  * <p>
  * In this example, getMin() would return R1 and getMax() would return R3.
  *
@@ -51,6 +55,33 @@ public class PriorityMatrix<T> {
         matrix.get(priority).add(element);
         elementToPriorityMap.put(element, priority);
     }
+
+    /**
+     *
+     * @param element The element to update,
+     * @param newPriority new priority value of the element
+     */
+    public void updatePriority(T element, int newPriority) {
+        remove(element);
+        insert(element, newPriority);
+    }
+
+    /**
+     * Check if structure has any elements.
+     * @return
+     */
+    public boolean isEmpty() {
+        return matrix.isEmpty();
+    }
+
+    /**
+     * Number of elements in the priority map.
+     * @return
+     */
+    public int size() {
+        return elementToPriorityMap.size();
+    }
+
 
     /**
      * Removes the specified element from the PriorityMatrix.
