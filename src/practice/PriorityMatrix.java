@@ -9,12 +9,19 @@ import java.util.TreeMap;
  * PriorityMatrix is a data structure that organizes elements based on their priorities.
  * It combines a TreeMap and PriorityQueues to allow efficient access to elements
  * with minimum and maximum priorities. The PriorityMatrix also supports insertion and removal of elements.
+ * <p>
+ * Example:
+ * Consider a PriorityMatrix of Resources, where the rows are CPU priority classes and columns are resources sorted by available RAM.
+ * 1: {R1(12GB), R2(8GB)}
+ * 2: {R3(16GB), R4(10GB)}
+ * <p>
+ * In this example, getMin() would return R1 and getMax() would return R3.
  *
  * @param <T> the type of elements stored in the PriorityMatrix
  */
 public class PriorityMatrix<T> {
     private final TreeMap<Integer, PriorityQueue<T>> matrix;
-    private final Map<T, Integer> priorities;
+    private final Map<T, Integer> elementToPriorityMap;
     private final Comparator<T> comparator;
 
     /**
@@ -24,7 +31,7 @@ public class PriorityMatrix<T> {
      */
     public PriorityMatrix(Comparator<T> comparator) {
         this.matrix = new TreeMap<>();
-        this.priorities = new HashMap<>();
+        this.elementToPriorityMap = new HashMap<>();
         this.comparator = comparator;
     }
 
@@ -36,13 +43,13 @@ public class PriorityMatrix<T> {
      * @throws IllegalArgumentException if the element already exists in the PriorityMatrix
      */
     public void insert(T element, int priority) {
-        if (priorities.containsKey(element)) {
+        if (elementToPriorityMap.containsKey(element)) {
             throw new IllegalArgumentException("Element already exists in the Priority Matrix");
         }
 
         matrix.putIfAbsent(priority, new PriorityQueue<>(comparator));
         matrix.get(priority).add(element);
-        priorities.put(element, priority);
+        elementToPriorityMap.put(element, priority);
     }
 
     /**
@@ -52,7 +59,7 @@ public class PriorityMatrix<T> {
      * @return true if the element was removed, false if the element was not found
      */
     public boolean remove(T element) {
-        Integer priority = priorities.remove(element);
+        Integer priority = elementToPriorityMap.remove(element);
         if (priority == null) {
             return false;
         }
@@ -100,7 +107,7 @@ public class PriorityMatrix<T> {
             matrix.remove(minPriority);
         }
 
-        priorities.remove(minElement);
+        elementToPriorityMap.remove(minElement);
         return minElement;
     }
 
@@ -136,7 +143,7 @@ public class PriorityMatrix<T> {
             matrix.remove(maxPriority);
         }
 
-        priorities.remove(maxElement);
+        elementToPriorityMap.remove(maxElement);
         return maxElement;
     }
 
