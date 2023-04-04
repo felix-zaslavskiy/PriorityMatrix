@@ -42,7 +42,7 @@ class Resource {
     }
 }
 class TaskScheduler {
-    private final PriorityMatrix<Resource> resourceMatrix;
+    private final PriorityMatrix<Resource, Integer> resourceMatrix;
 
     public TaskScheduler() {
         // Higher RAM is better
@@ -53,7 +53,6 @@ class TaskScheduler {
     public void addResource(Resource resource) {
         resourceMatrix.insert(resource, resource.cpuClassAvailability);
     }
-
 
     public Resource getResourceForTask() {
         // Lowest CPU class is better.
@@ -78,7 +77,8 @@ class TaskScheduler {
             resourceMatrix.insert(resource, resource.cpuClassAvailability);
         }
     }
-    public String toString(){
+
+    public String toString() {
         return resourceMatrix.toString();
     }
 }

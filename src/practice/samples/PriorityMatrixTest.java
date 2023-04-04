@@ -4,12 +4,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import practice.PriorityMatrix;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PriorityMatrixTest {
-    private PriorityMatrix<Resource> resourceMatrix;
+    private PriorityMatrix<Resource, Integer> resourceMatrix;
     private Resource resource1;
     private Resource resource2;
     private Resource resource3;
@@ -205,4 +208,24 @@ class PriorityMatrixTest {
         assertEquals(resource3, resourceMatrix.getMin());
     }
 
+    @Test
+    void iteratorTest() {
+        resourceMatrix.insert(resource1, 1);
+        resourceMatrix.insert(resource2, 1);
+        resourceMatrix.insert(resource3, 2);
+        resourceMatrix.insert(resource4, 2);
+
+        Iterator<Resource> iterator = resourceMatrix.iterator();
+        List<Resource> resources = new ArrayList<>();
+
+        while (iterator.hasNext()) {
+            resources.add(iterator.next());
+        }
+
+        assertEquals(4, resources.size());
+        assertTrue(resources.contains(resource1));
+        assertTrue(resources.contains(resource2));
+        assertTrue(resources.contains(resource3));
+        assertTrue(resources.contains(resource4));
+    }
 }

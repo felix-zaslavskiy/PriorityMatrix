@@ -12,7 +12,7 @@ import java.util.List;
  * demonstrating the full use of the data structure.
  */
 class LoadBalancer {
-    private final PriorityMatrix<Server> serverMatrix;
+    private final PriorityMatrix<Server, Integer> serverMatrix;
 
     public LoadBalancer() {
         Comparator<Server> serverComparator = Comparator.comparingInt(server -> server.capacity);

@@ -10,7 +10,9 @@ import java.util.TreeMap;
 /**
  * PriorityMatrix is a data structure that organizes elements based on their priorities.
  * It combines a TreeMap and PriorityQueues to allow efficient access to elements
- * with minimum and maximum priorities. The PriorityMatrix also supports insertion and removal of elements.
+ * with minimum and maximum priorities. The PriorityMatrix also supports insertion, removal,
+ * and updating priorities of elements.
+ *
  * <p>
  * Example:
  * Consider a PriorityMatrix of Resources, where the rows are CPU priority classes and columns are resources sorted by available RAM.
@@ -19,13 +21,14 @@ import java.util.TreeMap;
  * <p>
  * 2: {R3(16GB), R4(10GB)}
  * <p>
- * One may think of integer priority as the rows of the matrix and the secondary
+ * One may think of priority type P as the rows of the matrix and the secondary
  * ordering passed in as a Comparator as the column order of items in the matrix.
  *
  * <p>
  * In this example, getMin() would return R1 and getMax() would return R3.
  *
  * @param <T> the type of elements stored in the PriorityMatrix
+ * @param <P> the type of priorities associated with the elements in the PriorityMatrix, which must extend Comparable<P>
  */
 public class PriorityMatrix<T, P extends Comparable<P>> implements Iterable<T> {
     private final TreeMap<P, PriorityQueue<T>> matrix;
