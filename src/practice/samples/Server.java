@@ -1,4 +1,4 @@
-package practice;
+package practice.samples;
 
 class Server {
     String name;

@@ -1,4 +1,6 @@
-package practice;
+package practice.samples;
+
+import practice.PriorityMatrix;
 
 import java.util.Comparator;
 import java.util.List;
@@ -56,14 +58,14 @@ class TaskScheduler {
         resourceMatrix.remove(resource);
     }
 
-    public Resource getResourceForTask(Task task) {
+    public Resource getResourceForTask() {
         // Lowest CPU class is better.
         return resourceMatrix.getMin();
     }
 
     public void processTask(Task task) {
         // For now the task CPU priority is not considered.
-        Resource resource = getResourceForTask(task);
+        Resource resource = getResourceForTask();
         if (resource == null) {
             System.out.println("No available resources to process the task: " + task.name);
             return;

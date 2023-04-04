@@ -1,4 +1,4 @@
-package practice;
+package practice.samples;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +28,6 @@ class SimpleLoadBalancer {
         servers.add(server);
     }
 
-    public void removeServer(Server server) {
-        servers.remove(server);
-    }
 
     public Server getServerWithCapacity() {
         Server maxCapacityServer = null;

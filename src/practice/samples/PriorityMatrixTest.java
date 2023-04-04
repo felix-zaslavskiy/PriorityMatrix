@@ -1,7 +1,8 @@
-package practice;
+package practice.samples;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import practice.PriorityMatrix;
 
 import java.util.Comparator;
 

@@ -1,4 +1,6 @@
-package practice;
+package practice.samples;
+
+import practice.PriorityMatrix;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -21,9 +23,6 @@ class LoadBalancer {
         serverMatrix.insert(server, server.capacity);
     }
 
-    public void removeServer(Server server) {
-        serverMatrix.remove(server);
-    }
 
     public Server getServerWithCapacity() {
         return serverMatrix.getMin();
