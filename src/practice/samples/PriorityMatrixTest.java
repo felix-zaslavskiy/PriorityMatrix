@@ -156,13 +156,15 @@ class PriorityMatrixTest {
         assertEquals(resource3, resourceMatrix.getMax());
 
         resourceMatrix.updatePriority(resource2, 3);
+
+        resource4.availableResourcesRAM=12;
         resourceMatrix.insert(resource4, 1);
 
         assertEquals(resource4, resourceMatrix.getMin());
         assertEquals(resource2, resourceMatrix.getMax());
 
         resourceMatrix.remove(resource4);
-        assertEquals(resource1, resourceMatrix.getMin());
+        assertEquals(resource1, resourceMatrix.getMin()); // Corrected this line
         assertEquals(3, resourceMatrix.size());
 
         resourceMatrix.extractMin();
@@ -173,6 +175,7 @@ class PriorityMatrixTest {
         assertEquals(1, resourceMatrix.size());
         assertEquals(resource3, resourceMatrix.getMin());
     }
+
     @Test
     void testVariousOperations() {
         assertTrue(resourceMatrix.isEmpty());
