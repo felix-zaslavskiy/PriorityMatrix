@@ -9,7 +9,7 @@ note right
   Node4 (6 RAM)
 end note
 
-:Execute Task1;
+:Execute Task1 (5 RAM);
 note right
   Node1 (5 RAM)
   Node2 (6 RAM)
@@ -17,35 +17,35 @@ note right
   Node4 (6 RAM)
 end note
 
-:Execute Task2;
+:Execute Task2 (6 RAM);
 note right
   Node1 (5 RAM)
   Node3 (10 RAM)
   Node4 (6 RAM)
 end note
 
-:Execute Task3;
+:Execute Task3 (5 RAM);
 note right
   Node3 (10 RAM)
   Node4 (6 RAM)
 end note
 
-:Execute Task4;
+:Execute Task4 (5 RAM);
 note right
   Node3 (5 RAM)
   Node4 (6 RAM)
 end note
 
-:Execute Task5;
+:Execute Task5 (3 RAM);
 note right
   Node3 (5 RAM)
   Node4 (3 RAM)
 end note
 
-:Execute Task6;
+:Execute Task6 (2 RAM);
 note right
-  Node3 (5 RAM)
-  Node4 (1 RAM)
+  Node3 (3 RAM)
+  Node4 (3 RAM)
 end note
 
 stop

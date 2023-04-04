@@ -56,6 +56,7 @@ class SimpleLoadBalancer {
         System.out.println("Processing task " + task.name + " with priority " + task.priority + " on server " + server.name);
         server.capacity--;
     }
+
 }
 
 public class SimpleLoadBalancerDemo {
@@ -84,5 +85,7 @@ public class SimpleLoadBalancerDemo {
         for (BalancerTask task : tasks) {
             loadBalancer.processTask(task);
         }
+
+        System.out.println(loadBalancer);
     }
 }

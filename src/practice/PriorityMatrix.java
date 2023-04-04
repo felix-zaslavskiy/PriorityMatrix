@@ -139,4 +139,29 @@ public class PriorityMatrix<T> {
         priorities.remove(maxElement);
         return maxElement;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("PriorityMatrix{");
+
+        for (Map.Entry<Integer, PriorityQueue<T>> entry : matrix.entrySet()) {
+            Integer priority = entry.getKey();
+            PriorityQueue<T> elements = entry.getValue();
+
+            sb.append("\nPriority ").append(priority).append(": ");
+            boolean isFirst = true;
+            for (T element : elements) {
+                if (!isFirst) {
+                    sb.append(", ");
+                }
+                sb.append(element);
+                isFirst = false;
+            }
+        }
+
+        sb.append("\n}");
+        return sb.toString();
+    }
+
 }

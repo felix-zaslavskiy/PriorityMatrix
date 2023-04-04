@@ -29,6 +29,15 @@ class Resource {
         this.availableResourcesRAM = availableResourcesRAM;
         this.cpuClassAvailability =cpuAvailability;
     }
+
+    @Override
+    public String toString() {
+        return "Resource{" +
+                "name='" + name + '\'' +
+                ", availableResourcesRAM=" + availableResourcesRAM +
+                ", cpuClassAvailability=" + cpuClassAvailability +
+                '}';
+    }
 }
 class TaskScheduler {
     private final PriorityMatrix<Resource> resourceMatrix;
@@ -70,6 +79,9 @@ class TaskScheduler {
             resourceMatrix.insert(resource, resource.cpuClassAvailability);
         }
     }
+    public String toString(){
+        return resourceMatrix.toString();
+    }
 }
 
 public class TaskSchedulerDemo {
@@ -106,6 +118,9 @@ public class TaskSchedulerDemo {
 
         for (Task task : tasks) {
             scheduler.processTask(task);
+            System.out.println(scheduler);
         }
+
+
     }
 }
